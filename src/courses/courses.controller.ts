@@ -1,4 +1,4 @@
-import { Body, Controller, Get, HttpCode, Param, Post, Res, ResponseDecoratorOptions } from '@nestjs/common';
+import { Body, Controller, Delete, Get, HttpCode, HttpStatus, Param, Patch, Post, Res, ResponseDecoratorOptions } from '@nestjs/common';
 import { Response } from 'express';
 
 @Controller('courses')
@@ -29,6 +29,20 @@ export class CoursesController {
     @Post()
     create(@Body() body) {
         return body
+    }
+
+    //Patch para atualizar apenas um dado de algum recurso e put pata quando é todo o recurso, isso é apenas uma convenção
+    @Patch(':id')
+    update(@Param('id') id, @Body() body) {
+        console.log(body)
+        return `Update course with ID ${id}`
+    }
+
+
+    @HttpCode(HttpStatus.NO_CONTENT)
+    @Delete(":id")
+    Delete(@Param('id') id) {
+        return `Delete course with ID ${id}`
     }
 
 
