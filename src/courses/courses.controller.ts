@@ -6,7 +6,7 @@ import { CoursesService } from './courses.service';
 @Controller('courses')
 export class CoursesController {
 
-    constructor(private readonly coursesService : CoursesService){}
+    constructor(private readonly coursesService: CoursesService) { }
 
     @Get('list')
     findAll(@Res() response: Response) {
@@ -25,8 +25,8 @@ export class CoursesController {
      }*/
 
     @Get(':id')
-    findOne(@Param('id') id: string) {
-        return `Curso com ID ${id}`
+    findOne(@Param('id') id: number) {
+        return this.coursesService.findOne(Number(id))
     }
 
 
