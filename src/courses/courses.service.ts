@@ -24,7 +24,7 @@ export class CoursesService {
         this.courses.push(createCourseDTO)
     }
 
-    put(id: number, course: any) {
+    update(id: number, course: any) {
         const existCourse = this.findOne(id);
         if (existCourse) {
             const index = this.courses.findIndex(course => course.id === existCourse.id);
